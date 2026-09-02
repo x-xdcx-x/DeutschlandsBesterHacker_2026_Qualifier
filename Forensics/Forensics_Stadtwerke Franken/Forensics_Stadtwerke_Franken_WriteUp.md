@@ -16,6 +16,7 @@ The given artifact can be analyzed using `Wireshark`. The capture contains appro
 To filter out these packets, the following Wireshark display filter can be used: 
 
 ```!(dns.flags.response == 1) && dns.qry.type == 16 && !(ip contains "lbmfqwcylbmfqwcy")  && !(ip contains "aaaa")```
+
 Here, `dns.qry.type == 16` filters for `DNS TXT` records. After applying the filter, only 91 packets remain.
 
 They contain obfuscated chunks that are `Base32`-encoded and written in lowercase. Since `Base32` is conventionally represented using uppercase characters, the extracted chunks first have to be converted to uppercase before decoding them. 
